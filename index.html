@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Training Plan Generator</title>
+    <link rel="stylesheet" type="text/css" href="index.css" >
+</head>
+<body>
+    <h1>Training Plan Generator</h1>
+    <div class="form-container">
+        <form id="trainingForm">
+            <label>What days do you want long runs:</label>
+            <div class="checkbox-flex-container">
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="Mo">
+                    <span class="custom-checkbox">Mo</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="Tu">
+                    <span class="custom-checkbox">Tu</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="We">
+                    <span class="custom-checkbox">We</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="Th">
+                    <span class="custom-checkbox">Th</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="Fr">
+                    <span class="custom-checkbox">Fr</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="Sa">
+                    <span class="custom-checkbox">Sa</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="daysPerWeek" value="Su">
+                    <span class="custom-checkbox">Su</span>
+                </label>
+            </div>
+            <br><br>
+            <label for="weeklyMileage">Weekly Mileage Goal:</label>
+            <div class="input-wrapper">
+                <input type="text" name="weeklyMileage" pattern="[0-9]*">
+            </div>
+            <br><br>
+            <label for="raceGoals">Race Goals:</label>
+            <div class="input-wrapper">
+                <select name="raceGoals">
+                    <option value="1 mile">1 mile</option>
+                    <option value="5K">5K</option>
+                    <option value="10K">10K</option>
+                    <option value="Half Marathon">Half Marathon</option>
+                    <option value="Marathon">Marathon</option>
+                </select>
+            </div>
+            <br><br>
+            <input type="submit" value="Generate Training Plan">
+        </form>
+    </div>
+    <div id="output">
+        <!-- The generated training plan will be displayed here -->
+    </div>
+
+    <script>
+        document.getElementById('trainingForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const daysPerWeek = formData.getAll('daysPerWeek'); // Use getAll to get multiple values
+            const weeklyMileage = formData.get('weeklyMileage');
+            const raceGoals = formData.get('raceGoals');
+
+            const requestData = {
+                daysPerWeek,
+                weeklyMileage,
+                raceGoals,
+                apiKey: 'YOUR_OPENAI_API_KEY' // Replace this with your OpenAI API key
+            };
+
+            try {
+                const response = await fetch('/generate_training_plan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                // Display the generated training plan in the output div
+                document.getElementById('output').innerText = data.trainingPlan;
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle error (display an error message, etc.)
+            }
+        });
+    </script>
+</body>
+</html>

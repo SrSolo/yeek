@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #c1d5c0; /* Sage green background color */
+  color: #333;
+  margin: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #b6c7b0; /* Slightly darker green for the form box */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.input-wrapper {
+  background-color: #4e654e; /* Dark green container */
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.input-wrapper input[type="text"],
+.input-wrapper select {
+  border: none;
+  width: 100%;
+  padding: 5px;
+  background-color: transparent; /* Set the background of text box and drop-down to transparent */
+  color: #fff; /* Set text color to white for better visibility */
+}
+
+.checkbox-flex-container {
+  display: flex; /* Use flexbox for horizontal alignment */
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px; /* Make the checkbox slightly rounded */
+  border: 2px solid #006400;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.custom-checkbox::before {
+  content: "";
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #006400; /* Dark green fill when checkbox is selected */
+}
+
+input[type="submit"] {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #006400;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #006400;
+}
+
+#output {
+  margin-top: 30px;
+  text-align: center;
+}
