@@ -108,11 +108,11 @@
                 raceGoals,
                 trainingPlanLength,
                 racingGoalTime,
-                apiKey: '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'
+                apiKey: 'YOUR_OPENAI_API_KEY' // Replace this with your OpenAI API key
             };
 
             try {
-                const response = await fetch('/generate_training_plan', {
+                const response = await fetch('/api/generate_training_plan', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
