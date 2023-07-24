@@ -1,3 +1,4 @@
+// Function to create a checkbox input element
 function createCheckbox(name, value) {
     const label = document.createElement('label');
     const checkbox = document.createElement('input');
@@ -110,7 +111,6 @@ async function handleSubmit(e) {
         raceGoals,
         trainingPlanLength,
         racingGoalTime,
-        apiKey: "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"
     };
 
     try {
@@ -135,7 +135,7 @@ async function handleSubmit(e) {
     }
 }
 
-// Add form submission event listener when the document is fully loaded
+// Add form creation and submission event listener when the document is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     createForm();
     document.getElementById('trainingForm').addEventListener('submit', handleSubmit);
