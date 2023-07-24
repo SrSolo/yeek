@@ -1,7 +1,6 @@
 const http = require('http');
 
-const apiKey = process.env.API_URL;
-
+const apiKey = "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";
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -25,11 +24,14 @@ export default async function handler(req, res) {
 
         const reqHttp = http.request(options, (response) => {
             let responseData = '';
+
             response.on('data', (chunk) => {
                 responseData += chunk;
             });
 
             response.on('end', () => {
+                console.log('Response Data:', responseData);
+
                 try {
                     const parsedResponse = JSON.parse(responseData);
                     const trainingPlan = parsedResponse.choices[0].text;
@@ -52,7 +54,3 @@ export default async function handler(req, res) {
         res.status(405).end(); // Method Not Allowed
     }
 }
-
-
-
-
