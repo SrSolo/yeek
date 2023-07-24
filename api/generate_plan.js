@@ -1,5 +1,5 @@
 
-const axios = require('../node_modules/axios');
+import axios from 'axios';
 
 const apiKey = "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";
 
