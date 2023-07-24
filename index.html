@@ -96,15 +96,19 @@
             const form = e.target;
             const formData = new FormData(form);
 
-            const daysPerWeek = formData.getAll('daysPerWeek'); // Use getAll to get multiple values
+            const daysPerWeek = formData.getAll('daysPerWeek');
             const weeklyMileage = formData.get('weeklyMileage');
             const raceGoals = formData.get('raceGoals');
+            const trainingPlanLength = formData.get('trainingPlanLength');
+            const racingGoalTime = formData.get('racingGoalTime');
 
             const requestData = {
                 daysPerWeek,
                 weeklyMileage,
                 raceGoals,
-                apiKey: 'YOUR_OPENAI_API_KEY' // Replace this with your OpenAI API key
+                trainingPlanLength,
+                racingGoalTime,
+                apiKey: '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'
             };
 
             try {
