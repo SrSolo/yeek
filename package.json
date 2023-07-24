@@ -11,7 +11,7 @@
     "start:vercel": "vercel",
     "generate": "node api/generate_plan.js"
   },
-  "author": "Your Name",
+  "author": "Sebastian Solorzano",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.4",
