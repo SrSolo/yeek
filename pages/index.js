@@ -1,4 +1,3 @@
-
 function createCheckbox(name, value) {
     const label = document.createElement('label');
     const checkbox = document.createElement('input');
@@ -136,8 +135,8 @@ async function handleSubmit(e) {
     }
 }
 
-// Create the form dynamically when the page loads
-window.addEventListener('load', createForm);
-
-// Add form submission event listener
-document.getElementById('formContainer').addEventListener('submit', handleSubmit);
+// Add form submission event listener when the document is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    createForm();
+    document.getElementById('trainingForm').addEventListener('submit', handleSubmit);
+});
