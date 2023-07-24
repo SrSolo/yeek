@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         const postData = JSON.stringify({
             prompt: `You selected ${requestData.daysPerWeek} days per week for training. Your weekly mileage goal is ${requestData.weeklyMileage} miles, and your race goal is to run a ${requestData.raceGoals} in ${requestData.racingGoalTime}. Your training plan should be ${requestData.trainingPlanLength} weeks long.`,
             max_tokens: 200,
-            engine: "gpt-3.5-turbo", // Use the gpt-3.5-turbo model
+            model: "gpt-3.5-turbo", // Use the gpt-3.5-turbo model
         });
 
         const options = {
