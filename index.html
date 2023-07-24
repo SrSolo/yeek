@@ -108,7 +108,7 @@
                 raceGoals,
                 trainingPlanLength,
                 racingGoalTime,
-                apiKey: process.env.API_KEY
+                apiKey: "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"
             };
 
             try {
@@ -130,7 +130,7 @@
                 document.getElementById('output').innerText = data.trainingPlan;
             } catch (error) {
                 console.error('Error:', error);
-                // Handle error (display an error message, etc.)
+                
             }
         });
     </script>
