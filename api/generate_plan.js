@@ -1,6 +1,6 @@
 const http = require('http');
 
-const apiKey = "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";
+const apiKey = process.env.API_KEY;
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
