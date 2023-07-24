@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const requestData = req.body;
         const postData = JSON.stringify({
-            prompt: `Create a training plan formatted each week Monday through Sunday, where I run at most ${requestData.weeklyMileage} miles per week, and my race goal is to run a ${requestData.raceGoals} in ${requestData.racingGoalTime}. My training plan should be ${requestData.trainingPlanLength} weeks long. For longer racing distances, later weeks should taper off in distance, and my long run should be on ${requestData.daysPerWeek}`,
+            prompt: `Create a training plan formatted each week Monday through Sunday, where I run at most ${requestData.weeklyMileage} miles per week, and my race goal is to run a ${requestData.raceGoals} in ${requestData.racingGoalTime}. My training plan should be ${requestData.trainingPlanLength} weeks long. For longer racing distances, later weeks should taper off in distance. My long run should be on ${requestData.daysPerWeek}`,
             max_tokens: 200,
         });
 
