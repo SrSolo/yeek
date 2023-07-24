@@ -1,13 +1,14 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training Plan Generator</title>
-    <link rel="stylesheet" type="text/css" href="index.css" >
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
+
 <body>
     <h1>Training Plan Generator</h1>
     <div class="form-container">
@@ -69,7 +70,7 @@
                     <option value="18">18 weeks</option>
                 </select>
             </div>
-            
+
             <br>
             <label for="raceGoals">Race Goals:</label>
             <div class="input-wrapper">
@@ -90,50 +91,49 @@
             <input type="submit" value="Generate Training Plan">
         </form>
     </div>
-    <div id="output" id="output-container">
-        
+    <div id="output" class="output-container">
+
     </div>
     <script>
         document.getElementById('trainingForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
 
-    const daysPerWeek = formData.getAll('daysPerWeek');
-    const weeklyMileage = formData.get('weeklyMileage');
-    const raceGoals = formData.get('raceGoals');
-    const trainingPlanLength = formData.get('trainingPlanLength');
-    const racingGoalTime = formData.get('racingGoalTime');
+            const daysPerWeek = formData.getAll('daysPerWeek');
+            const weeklyMileage = formData.get('weeklyMileage');
+            const raceGoals = formData.get('raceGoals');
+            const trainingPlanLength = formData.get('trainingPlanLength');
+            const racingGoalTime = formData.get('racingGoalTime');
 
-    const requestData = {
-        daysPerWeek,
-        weeklyMileage,
-        raceGoals,
-        trainingPlanLength,
-        racingGoalTime
-    };
+            const requestData = {
+                daysPerWeek,
+                weeklyMileage,
+                raceGoals,
+                trainingPlanLength,
+                racingGoalTime
+            };
 
-    try {
-        const response = await fetch('/api/generate_plan', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestData)
+            try {
+                const response = await fetch('/api/generate_plan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                document.getElementById('output').innerText = data.trainingPlan;
+            } catch (error) {
+                console.error('Error:', error);
+            }
         });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-
-        // Display the generated training plan in the output div
-        document.getElementById('output').innerText = data.trainingPlan;
-    } catch (error) {
-        console.error('Error:', error);
-    }
-});
     </script>
 </body>
-</html> 
+
+</html>

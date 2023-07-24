@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const requestData = req.body;
         const postData = JSON.stringify({
-            prompt: `Create a training plan formatted each week Monday through Sunday, where I run at most ${requestData.weeklyMileage} miles per week, and my race goal is to run a ${requestData.raceGoals} in ${requestData.racingGoalTime}. My training plan should be ${requestData.trainingPlanLength} weeks long. For longer racing distances, later weeks should taper off in distance. My long run should be on ${requestData.daysPerWeek}`,
+            prompt: `Create a training plan formatted each week Monday through Sunday, My longest runs should be on ${requestData.daysPerWeek}, where I run at most ${requestData.weeklyMileage} miles per week, and my race goal is to run a ${requestData.raceGoals} in ${requestData.racingGoalTime}. My training plan should be ${requestData.trainingPlanLength} weeks long. For longer racing distances, later weeks should taper off in distance.`,
             max_tokens: 200,
         });
 
@@ -68,6 +68,3 @@ export default async function handler(req, res) {
         res.status(405).end(); // Method Not Allowed
     }
 }
-
-
-
