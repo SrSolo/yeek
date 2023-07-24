@@ -1,4 +1,4 @@
-const http = require('http');
+const https = require('https');
 
 const apiKey = process.env.API_KEY;
 
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
             },
         };
 
-        const reqHttp = http.request(options, (response) => {
+        const reqHttps = https.request(options, (response) => {
             let responseData = '';
 
             response.on('data', (chunk) => {
@@ -58,13 +58,13 @@ export default async function handler(req, res) {
             });
         });
 
-        reqHttp.on('error', (error) => {
+        reqHttps.on('error', (error) => {
             console.error('Error:', error.message);
             res.status(500).json({ error: 'An error occurred while generating the training plan.' });
         });
 
-        reqHttp.write(postData);
-        reqHttp.end();
+        reqHttps.write(postData);
+        reqHttps.end();
     } else {
         res.status(405).end(); // Method Not Allowed
     }
