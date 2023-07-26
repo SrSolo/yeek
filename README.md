@@ -1,4 +1,6 @@
 # yeek
+https://yeek.vercel.app/
+
 create running plans based on a few criteria
 
 currently uses my OpenAI key(which will soon run out of credits) to generate training plans. 
